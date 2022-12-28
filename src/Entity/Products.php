@@ -37,7 +37,7 @@ class Products
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
-    private ?Categories $categories = null;
+    private ?Categories $categories;
 
     #[ORM\OneToMany(mappedBy: 'products', targetEntity: Reviews::class)]
     private Collection $reviews;
