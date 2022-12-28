@@ -23,7 +23,7 @@ class Customers
     private ?string $city = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?User $users = null;
+    private ?User $users;
 
 
 
