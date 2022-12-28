@@ -14,7 +14,7 @@ class Images
     private ?int $id = null;
 
     #[ORM\Column(length: 25)]
-    private ?string $name = null;
+    private ?string $name;
 
     #[ORM\Column(length: 65)]
     private ?string $file = null;
@@ -61,5 +61,10 @@ class Images
         $this->products = $products;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
