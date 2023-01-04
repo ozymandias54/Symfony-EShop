@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categories;
+use App\Entity\CouponsTypes;
 use App\Entity\Customers;
 use App\Entity\Products;
 use App\Entity\User;
@@ -49,8 +50,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Clients', 'fas fa-users', Customers::class);
-        yield MenuItem::linkToCrud('Categories', 'fas fa-database', Categories::class);
+        yield MenuItem::linkToCrud('Categories', 'fas fa-tag', Categories::class);
         yield MenuItem::linkToCrud('Image', 'fas fa-database', Images::class);
         yield MenuItem::linkToCrud('Produit', 'fas fa-list', Products::class);
+        yield MenuItem::linkToCrud('Type de Coupon', 'fas fa-list', CouponsTypes::class);
     }
 }
