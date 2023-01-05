@@ -42,7 +42,7 @@
 				<div class="row bg-secondary py-1 px-xl-5">
 					<div class="col-lg-6 d-none d-lg-block">
 						<div class="d-inline-flex align-items-center h-100">
-							<a class="text-body mr-3" href="">About</a>
+
 							<a class="text-body mr-3" href="">Contact</a>
 							<a class="text-body mr-3" href="">Help</a>
 							<a class="text-body mr-3" href="">FAQs</a>
@@ -50,12 +50,30 @@
 					</div>
 					<div class="col-lg-6 text-center text-lg-right">
 						<div class="d-inline-flex align-items-center">
+							<a class="text-body mr-3" href="{{ path('admin')}}">Administration</a>
 							<div class="btn-group">
-								<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
-								<div class="dropdown-menu dropdown-menu-right">
-									<button class="dropdown-item" type="button">Sign in</button>
-									<button class="dropdown-item" type="button">Sign up</button>
-								</div>
+								{% if app.user %}
+									<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">{{ app.user}}</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<a href="{{path('app_login')}}">
+											<button class="dropdown-item" type="button">Mon Compte</button>
+										</a>
+										<a href="{{path('app_logout')}}">
+											<button class="dropdown-item" type="button">Se deconnecter</button>
+										</a>
+									</div>
+								{% else %}
+									<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Connexion...</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<a href="{{path('app_login')}}">
+											<button class="dropdown-item" type="button">Se connecter</button>
+										</a>
+										<a href="#">
+											<button class="dropdown-item" type="button">S'inscrirer</button>
+										</a>
+									</div>
+								{% endif %}
+
 							</div>
 							<div class="btn-group mx-2">
 								<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
@@ -204,7 +222,7 @@
 						<p class="mb-md-0 text-center text-md-left text-secondary">
 							&copy;
 							<a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
-																																																																																																																																																								                    by
+																																																																																																																																																																																																																																																																																																																																																																									                    by
 							<a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
 						</p>
 					</div>
@@ -236,5 +254,4 @@
 		<!-- Template Javascript -->
 		<script src=" {{ asset('assets/js/main.js') }} "></script>
 	</body>
-
-</html>
+</html></body></html>
