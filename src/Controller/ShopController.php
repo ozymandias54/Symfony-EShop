@@ -16,7 +16,7 @@ class ShopController extends AbstractController
     public function index(ManagerRegistry $registry): Response
     {
 
-        $product = new ImagesRepository($registry);
+        $product = new ProductsRepository($registry);
         $products = $product->findAll();
         $categorie = new CategoriesRepository($registry);
         $list = $categorie->findAll();

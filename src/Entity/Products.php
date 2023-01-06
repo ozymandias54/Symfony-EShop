@@ -303,4 +303,9 @@ class Products
     {
         return $this->name;
     }
+
+    public function photo()
+    {
+        return $this->getImages()->first()->getFile();
+    }
 }
