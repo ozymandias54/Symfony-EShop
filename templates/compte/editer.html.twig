@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}Editer
+	{{app.user}}
+{% endblock %}
+
+{% block contenu %}
+	<div style="margin-left:21%; margin-right:21%">
+		<h2>Editer le Profile</h2><br>
+		{{form(form)}}
+		</div>
+	{% endblock %}
