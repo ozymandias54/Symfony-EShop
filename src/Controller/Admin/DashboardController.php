@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Arrivals;
+use App\Entity\ArrivalsDetails;
 use App\Entity\Categories;
 use App\Entity\Coupons;
 use App\Entity\CouponsTypes;
@@ -10,6 +12,9 @@ use App\Entity\Deliveries;
 use App\Entity\Products;
 use App\Entity\User;
 use App\Entity\Images;
+use App\Entity\Orders;
+use App\Entity\OrdersDetails;
+use App\Entity\Payments;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -58,5 +63,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Type de Coupon', 'fas fa-list', CouponsTypes::class);
         yield MenuItem::linkToCrud('Coupon', 'fas fa-list', Coupons::class);
         yield MenuItem::linkToCrud('Livraisons', 'fas fa-list', Deliveries::class);
+        yield MenuItem::linkToCrud('ArrivalsDetails', 'fas fa-list', ArrivalsDetails::class);
+        yield MenuItem::linkToCrud('Arrivals', 'fas fa-list', Arrivals::class);
+        yield MenuItem::linkToCrud('Orders', 'fas fa-list', Orders::class);
+        yield MenuItem::linkToCrud('OrdersDetails', 'fas fa-list', OrdersDetails::class);
+        yield MenuItem::linkToCrud('Payements', 'fas fa-list', Payments::class);
     }
 }
