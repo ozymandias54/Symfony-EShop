@@ -19,6 +19,7 @@
 
 		<!-- Google Web Fonts -->
 		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="stylesheet" href="{{ asset('assets/css/compte.css')}}">
 		<link
 		href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -55,7 +56,7 @@
 								{% if app.user %}
 									<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">{{ app.user}}</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<a href="{{path('app_login')}}">
+										<a href="{{path('compte')}}">
 											<button class="dropdown-item" type="button">Mon Compte</button>
 										</a>
 										<a href="{{path('app_logout')}}">
@@ -222,7 +223,7 @@
 						<p class="mb-md-0 text-center text-md-left text-secondary">
 							&copy;
 							<a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
-																																																																																																																																																																																																																																																																																																																																																																																	                    by
+																																																																																																																																																																																																																																																																																																																																																																																																									                    by
 							<a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
 						</p>
 					</div>

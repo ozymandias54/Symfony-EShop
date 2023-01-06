@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompteController!
+{% endblock %}
+
+{% block contenu %}
+	<br>
+	<center>
+		<div class="contenu-profil ">
+			<br>
+			<h2>Bienvenue sur votre compte</h2>
+			<br>
+			<div class="row">
+				<div class="col">
+					<img src="{{ asset('assets/img/user.webp')}}" width="26%" alt="">
+					<hr>
+					<a href="#" class="btn btn-outline-primary">Editer le Profil</a>
+				</div>
+				<div class="col info-profil">
+					Nom:
+					{{app.user.firstname}}
+					<br><hr>
+					Prenom:
+					{{ app.user.lastname}}
+					<br><hr>
+					Email:
+					{{app.user.eMail}}
+					<br><hr>
+					Role:
+					{{app.user.roles[0]}}</div>
+			</div>
+			<br>
+		</div>
+	</center>
+{% endblock %}
