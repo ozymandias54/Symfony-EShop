@@ -15,6 +15,7 @@ use App\Entity\Images;
 use App\Entity\Orders;
 use App\Entity\OrdersDetails;
 use App\Entity\Payments;
+use App\Entity\Reviews;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -68,5 +69,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Orders', 'fas fa-list', Orders::class);
         yield MenuItem::linkToCrud('OrdersDetails', 'fas fa-list', OrdersDetails::class);
         yield MenuItem::linkToCrud('Payements', 'fas fa-list', Payments::class);
+        yield MenuItem::linkToCrud('Reviews', 'fas fa-list', Reviews::class);
     }
 }
