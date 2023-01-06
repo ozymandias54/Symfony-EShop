@@ -3,8 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categories;
+use App\Entity\Coupons;
 use App\Entity\CouponsTypes;
 use App\Entity\Customers;
+use App\Entity\Deliveries;
 use App\Entity\Products;
 use App\Entity\User;
 use App\Entity\Images;
@@ -54,5 +56,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Image', 'fas fa-database', Images::class);
         yield MenuItem::linkToCrud('Produit', 'fas fa-list', Products::class);
         yield MenuItem::linkToCrud('Type de Coupon', 'fas fa-list', CouponsTypes::class);
+        yield MenuItem::linkToCrud('Coupon', 'fas fa-list', Coupons::class);
+        yield MenuItem::linkToCrud('Livraisons', 'fas fa-list', Deliveries::class);
     }
 }
