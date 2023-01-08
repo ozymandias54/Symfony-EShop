@@ -25,4 +25,19 @@ class ShopController extends AbstractController
             'products' => $products,
         ]);
     }
+
+    #[Route('/shop/{idCat}', name: 'shopCategorie')]
+    public function indexCategorie(ManagerRegistry $registry, int $idCat): Response
+    {
+
+
+        $categorie = new CategoriesRepository($registry);
+        $list = $categorie->findAll();
+        $cat = $categorie->find($idCat);
+        $products = $cat->getProducts();
+        return $this->render('shop/index.html.twig', [
+            'categories' => $list,
+            'products' => $products,
+        ]);
+    }
 }
