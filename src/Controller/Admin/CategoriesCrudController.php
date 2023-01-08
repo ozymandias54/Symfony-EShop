@@ -26,7 +26,7 @@ class CategoriesCrudController extends AbstractCrudController
             TextField::new('name'),
             TextField::new('slug'),
             DateTimeField::new('createAt')->hideOnForm(),
-            AssociationField::new('parent', 'SubCategory')
+            AssociationField::new('parent', 'SubCategory')->setRequired(false)
         ];
     }
 

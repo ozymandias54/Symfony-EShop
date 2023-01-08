@@ -24,7 +24,9 @@ class ImagesCrudController extends AbstractCrudController
             TextField::new('name'),
             ImageField::new('file')
                 ->setBasePath('upload/images/products')
-                ->setUploadDir('public/upload/images/products'),
+                ->setUploadDir('public/upload/images/products')
+                ->setUploadedFileNamePattern('[contenthash] . [extension]')
+                ->setRequired(false),
             AssociationField::new('products')
         ];
     }
