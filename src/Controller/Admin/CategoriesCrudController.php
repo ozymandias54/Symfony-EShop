@@ -33,7 +33,7 @@ class CategoriesCrudController extends AbstractCrudController
                 ->setUploadedFileNamePattern('[contenthash] . [extension]')
                 ->setRequired(false),
             DateTimeField::new('createAt')->hideOnForm(),
-            AssociationField::new('parent', 'SubCategory')->setRequired(false)
+            AssociationField::new('parent')->setRequired(false)
         ];
     }
 
