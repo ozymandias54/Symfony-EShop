@@ -117,7 +117,7 @@
 				{% for categorie in categories %}
 					{% if categorie.products is not empty %}
 						<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-							<a class="text-decoration-none" href="/shop/{{categorie.id}}">
+							<a class="text-decoration-none" href="{{path('shopCategorie',{'slug':categorie.slug})}}">
 								<div class="cat-item d-flex align-items-center mb-4">
 									<div class="overflow-hidden" style="width: 100px; height: 100px;">
 										<img class="img-fluid" height="100%" src="upload/images/categories/{{ categorie.image}}" alt="">
@@ -169,7 +169,7 @@
 								</div>
 							</div>
 							<div class="text-center py-4">
-								<a class="h6 text-decoration-none text-truncate" href="/shop/{{produit.id}}">{{produit}}</a>
+								<a class="h6 text-decoration-none text-truncate" href="{{ path('detail',{'slug':produit.slug})}}">{{produit}}</a>
 								<div class="d-flex align-items-center justify-content-center mt-2">
 									<h5>{{produit.price/100}}
 										Euro</h5>
@@ -252,7 +252,7 @@
 							</div>
 						</div>
 						<div class="text-center py-4">
-							<a class="h6 text-decoration-none text-truncate" href="/detail/{{ produit.id }}">{{ produit}}</a>
+							<a class="h6 text-decoration-none text-truncate" href="{{ path('detail',{'slug':produit.slug})}}">{{ produit}}</a>
 							<div class="d-flex align-items-center justify-content-center mt-2">
 								<h5>{{ produit.price/100}}
 									Euro</h5>

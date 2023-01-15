@@ -150,15 +150,15 @@
 								<div class="navbar-nav w-100">
 									{% for categorie in categories %}
 										{% if (categorie.subCategories is empty) and categorie.parent is null %}
-											<a href="/shop/{{ categorie.id}}" class="nav-item nav-link">{{categorie}}</a>
+											<a href="{{ path('shopCategorie',{'slug':categorie.slug})}}" class="nav-item nav-link">{{categorie}}</a>
 										{% elseif categorie.subCategories is not empty %}
 											<div class="nav-item dropdown dropright">
-												<a href="/shop/{{ categorie.id}}" class="nav-link dropdown-toggle" data-toggle="dropdown">{{categorie}}
+												<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">{{categorie}}
 													<i class="fa fa-angle-right float-right mt-1"></i>
 												</a>
 												<div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
 													{% for subcat in categorie.subCategories %}
-														<a href="/shop/{{ subcat.id}}" class="dropdown-item">{{ subcat}}</a>
+														<a href="{{ path('shopCategorie',{'slug':subcat.slug})}}" class="dropdown-item">{{ subcat}}</a>
 													{% endfor %}
 												</div>
 											</div>
@@ -308,7 +308,6 @@
 						<p class="mb-md-0 text-center text-md-left text-secondary">
 							&copy;
 							<a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
-							<<<<<<<<<Temporarymergebranch1by=========by>>>>>>>>> Temporary merge branch 2
 							<a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
 						</p>
 					</div>
