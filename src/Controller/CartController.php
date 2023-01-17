@@ -2,17 +2,66 @@
 
 namespace App\Controller;
 
+use App\Classe\Panier;
+use App\Entity\Products;
+use App\Repository\ProductsRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
-    #[Route('/cart', name: 'cart')]
-    public function index(): Response
+    private $entity;
+    public function __construct(EntityManagerInterface $entity)
     {
+        $this->entity = $entity;
+    }
+
+    #[Route('/cart', name: 'cart')]
+    public function index(Panier $panier, ManagerRegistry $request): Response
+    {
+        $panierComplete = [];
+
+        $productRepository = new ProductsRepository($request);
+        if ($panier->get() != null) {
+            foreach ($panier->get() as $id => $quantite) {
+                $produit = $productRepository->findOneById($id);
+                $panierComplete[$id] = [
+                    'id' => $id,
+                    'image' => $produit->photo(),
+                    'name' => $produit->getName(),
+                    'prix' => $produit->getPrice(),
+                    'quantite' => $quantite,
+
+                ];
+            }
+        }
+        //dd($panier->get());
         return $this->render('cart/index.html.twig', [
-            'controller_name' => 'CartController',
+            'panierComplete' => $panierComplete
         ]);
+    }
+
+    #[Route('/cart/add/{id}', name: 'addcart')]
+    public function add($id, Panier $panier): Response
+    {
+        $panier->add($id);
+        return $this->redirectToRoute('cart');
+    }
+    #[Route('/cart/remove/{id}', name: 'removecart')]
+    public function remove($id, Panier $panier): Response
+    {
+        $panier->remove($id);
+        return $this->redirectToRoute('cart');
+    }
+
+    #[Route('/cart/removeall', name: 'removeallcart')]
+    public function supprimer(Panier $panier): Response
+    {
+        $panier->supp();
+        return $this->redirectToRoute('cart');
     }
 }
