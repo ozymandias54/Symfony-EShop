@@ -14,15 +14,15 @@ class Panier
     {
         $this->request = $request;
     }
-    public function add($id)
+    public function add($id, $quantite)
     {
         $session = $this->request->getSession();
         $panier = $session->get('panier', []);
 
         if (!empty($panier[$id])) {
-            $panier[$id]++;
+            $panier[$id] = $panier[$id] + $quantite;
         } else {
-            $panier[$id] = 1;
+            $panier[$id] = $quantite;
         }
 
         $session->set('panier', $panier);

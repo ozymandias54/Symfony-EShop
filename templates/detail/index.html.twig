@@ -46,22 +46,25 @@
 						Euro</h3>
 					<p class="mb-4">{{product.description}}</p>
 					<div class="d-flex align-items-center mb-4 pt-2">
-						<div class="input-group quantity mr-3" style="width: 130px;">
-							<div class="input-group-btn">
-								<button class="btn btn-primary btn-minus">
-									<i class="fa fa-minus"></i>
-								</button>
+						<form class="d-flex align-items-center mb-4 pt-2" action="{{path('addcart')}}" method="get">
+							<div class="input-group quantity mr-3" style="width: 130px;">
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-primary btn-minus">
+										<i class="fa fa-minus"></i>
+									</button>
+								</div>
+								<input type="text" name="quantite" class="form-control bg-secondary border-0 text-center" value="1">
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-primary btn-plus">
+										<i class="fa fa-plus"></i>
+									</button>
+								</div>
 							</div>
-							<input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-							<div class="input-group-btn">
-								<button class="btn btn-primary btn-plus">
-									<i class="fa fa-plus"></i>
-								</button>
-							</div>
-						</div>
-						<a href="{{ path('addcart',{'id':product.id})}}" class="btn btn-primary px-3">
-							<i class="fa fa-shopping-cart mr-1"></i>
-							Ajouter au Panier</a>
+							<input type="hidden" name="id" value="{{product.id}}">
+							<button class="btn btn-primary px-3" type="submit">
+								<i class="fa fa-shopping-cart mr-1"></i>
+								Ajouter au Panier</button>
+						</form>
 					</div>
 					<div class="d-flex pt-2">
 						<strong class="text-dark mr-2">Share on:</strong>
@@ -478,7 +481,7 @@
 				<p class="mb-md-0 text-center text-md-left text-secondary">
 					&copy;
 					<a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
-																																																																																																																																				                by
+																																																																																																																																																																																																																																				                by
 					<a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
 				</p>
 			</div>

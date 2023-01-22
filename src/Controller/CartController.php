@@ -45,10 +45,15 @@ class CartController extends AbstractController
         ]);
     }
 
-    #[Route('/cart/add/{id}', name: 'addcart')]
-    public function add($id, Panier $panier): Response
+    #[Route('/cart/add', name: 'addcart')]
+    public function add(Panier $panier): Response
     {
-        $panier->add($id);
+        if ($_GET != null) {
+            $id = $_GET['id'];
+            $quantite = $_GET['quantite'];
+            $panier->add($id, $quantite);
+        }
+
         return $this->redirectToRoute('cart');
     }
     #[Route('/cart/remove/{id}', name: 'removecart')]
