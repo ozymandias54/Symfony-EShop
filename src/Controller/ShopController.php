@@ -35,7 +35,7 @@ class ShopController extends AbstractController
         $list = $categorie->findAll();
         $cat = $categorie->findOneBySlug($slug);
         $products = $cat->getProducts();
-        return $this->render('shop/index.html.twig', [
+        return $this->render('shop/shopCategorie.html.twig', [
             'categories' => $list,
             'products' => $products,
         ]);
