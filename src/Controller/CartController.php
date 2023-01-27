@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Classe\Panier;
 use App\Entity\Products;
+use App\Repository\CategoriesRepository;
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -23,8 +24,9 @@ class CartController extends AbstractController
     #[Route('/cart', name: 'cart')]
     public function index(Panier $panier, ManagerRegistry $request): Response
     {
+        $categorie = new CategoriesRepository($request);
+        $list = $categorie->findAll();
         $panierComplete = [];
-
         $productRepository = new ProductsRepository($request);
         if ($panier->get() != null) {
             foreach ($panier->get() as $id => $quantite) {
@@ -41,6 +43,7 @@ class CartController extends AbstractController
         }
         //dd($panier->get());
         return $this->render('cart/index.html.twig', [
+            'categories' => $list,
             'panierComplete' => $panierComplete
         ]);
     }
