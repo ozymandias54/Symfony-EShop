@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: OrdersDetailsRepository::class)]
 class OrdersDetails
 {
-    /*#[ORM\Id]
+    #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;*/
+    private ?int $id = null;
 
     #[ORM\Column]
     private ?int $quantity = null;
@@ -19,18 +19,16 @@ class OrdersDetails
     #[ORM\Column]
     private ?int $price = null;
 
-    #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'ordersDetails')]
     private ?Orders $orders = null;
 
-    #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'ordersDetails')]
     private ?Products $products = null;
 
-    /* public function getId(): ?int
+    public function getId(): ?int
     {
         return $this->id;
-    } */
+    }
 
     public function getQuantity(): ?int
     {

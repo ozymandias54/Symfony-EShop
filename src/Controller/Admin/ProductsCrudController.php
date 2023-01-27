@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Images;
 use App\Entity\Products;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -31,7 +32,9 @@ class ProductsCrudController extends AbstractCrudController
             TextField::new('name'),
             SlugField::new('slug')->setTargetFieldName('name')->hideOnIndex(),
             TextareaField::new('description'),
-            AssociationField::new('categories'),
+            AssociationField::new('categories')->setQueryBuilder(function (QueryBuilder $queryBuilder) {
+                $queryBuilder->where('entity.active = true');
+            }),
             MoneyField::new('price')->setCurrency('EUR'),
             IntegerField::new('stock'),
             DateTimeField::new('createdAt')->hideOnForm(),
