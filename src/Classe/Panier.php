@@ -28,6 +28,17 @@ class Panier
         $session->set('panier', $panier);
     }
 
+    public function nbreProduit()
+    {
+        $produits = $this->get();
+        $nbre = 0;
+        if ($produits == null) {
+            return $nbre;
+        } else {
+            $nbre = count($produits);
+            return $nbre;
+        }
+    }
     public function get()
     {
         $session = $this->request->getSession();

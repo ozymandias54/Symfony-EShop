@@ -200,15 +200,19 @@
 									</div>
 									<a href="{{path('contact')}}" class="nav-item nav-link {% if app.request.get('_route') == 'contact' %}active{% endif %}">Contact</a>
 								</div>
-								<div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-									<a href="" class="btn px-0">
-										<i class="fas fa-heart text-primary"></i>
-										<span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-									</a>
-									<a href="{{ path('cart')}}" class="text-primary px-0 ml-3">Mon Panier
-										<i class="fas fa-shopping-cart text-primary"></i>
-									</a>
-								</div>
+								{% if app.user %}
+									<div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+										<a href="" class="btn px-0">
+											<i class="fas fa-heart text-primary"></i>
+											<span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+										</a>
+										<a href="{{ path('cart')}}" class="text-primary px-0 ml-3">Mon Panier
+											<span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{panierProduit}}</span>
+											<i class="fas fa-shopping-cart text-primary"></i>
+										</a>
+									</div>
+								{% endif %}
+
 							</div>
 						</nav>
 					</div>

@@ -41,10 +41,13 @@ class CartController extends AbstractController
                 ];
             }
         }
+
+        $nbre = $panier->nbreProduit();
         //dd($panier->get());
         return $this->render('cart/index.html.twig', [
             'categories' => $list,
-            'panierComplete' => $panierComplete
+            'panierComplete' => $panierComplete,
+            'panierProduit' => $nbre
         ]);
     }
 

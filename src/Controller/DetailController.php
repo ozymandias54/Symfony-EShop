@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Panier;
 use App\Repository\CategoriesRepository;
 use App\Repository\ProductsRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -12,15 +13,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class DetailController extends AbstractController
 {
     #[Route('/detail/{slug}', name: 'detail')]
-    public function index($slug, ManagerRegistry $registry): Response
+    public function index($slug, ManagerRegistry $registry, Panier $panier): Response
     {
         $categorie = new CategoriesRepository($registry);
         $list = $categorie->findAll();
         $product = new ProductsRepository($registry);
         $product = $product->findOneBySlug($slug);
+
+        $nbre = $panier->nbreProduit();
+
         return $this->render('detail/index.html.twig', [
             'product' => $product,
             'categories' => $list,
+            'panierProduit' => $nbre
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Panier;
 use App\Repository\CategoriesRepository;
 use App\Repository\ImagesRepository;
 use App\Repository\ProductsRepository;
@@ -13,21 +14,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class ShopController extends AbstractController
 {
     #[Route('/shop', name: 'shop')]
-    public function index(ManagerRegistry $registry): Response
+    public function index(ManagerRegistry $registry, Panier $panier): Response
     {
 
         $product = new ProductsRepository($registry);
         $products = $product->findAll();
         $categorie = new CategoriesRepository($registry);
         $list = $categorie->findAll();
+
+        $nbre = $panier->nbreProduit();
         return $this->render('shop/index.html.twig', [
             'categories' => $list,
             'products' => $products,
+            'panierProduit' => $nbre
         ]);
     }
 
     #[Route('/shop/{slug}', name: 'shopCategorie')]
-    public function indexCategorie(ManagerRegistry $registry, $slug): Response
+    public function indexCategorie(ManagerRegistry $registry, $slug, Panier $panier): Response
     {
 
 
@@ -35,9 +39,12 @@ class ShopController extends AbstractController
         $list = $categorie->findAll();
         $cat = $categorie->findOneBySlug($slug);
         $products = $cat->getProducts();
+
+        $nbre = $panier->nbreProduit();
         return $this->render('shop/shopCategorie.html.twig', [
             'categories' => $list,
             'products' => $products,
+            'panierProduit' => $nbre
         ]);
     }
 }
