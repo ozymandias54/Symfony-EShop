@@ -37,6 +37,14 @@ class ProductsCrudController extends AbstractCrudController
             }),
             MoneyField::new('price')->setCurrency('EUR'),
             IntegerField::new('stock'),
+            CollectionField::new('images')
+                ->allowAdd(true)
+                ->allowDelete(true)
+                ->useEntryCrudForm(
+                    ImagesCrudController::class,
+                    'new_images_on_products_page',
+                    'edit_images_on_products_page'
+                ),
             DateTimeField::new('createdAt')->hideOnForm(),
         ];
     }

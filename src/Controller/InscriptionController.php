@@ -29,6 +29,7 @@ class InscriptionController extends AbstractController
             $user->setCreateAt(new \DateTimeImmutable);
             $doctrine = new UserRepository($registry);
             $doctrine->save($user, true);
+            return $this->redirectToRoute('compte');
         }
         return $this->render('inscription/index.html.twig', [
             'form' => $form->createView()
