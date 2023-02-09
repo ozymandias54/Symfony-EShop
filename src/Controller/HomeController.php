@@ -25,15 +25,12 @@ class HomeController extends AbstractController
     public function index(ManagerRegistry $registry, Panier $panier): Response
     {
 
-        $list = $this->entity->getRepository(Categories::class)->findAll();
-
         $product = new ProductsRepository($registry);
         $produitRecent = $product->findBy(array(), ['createdAt' => 'DESC'], 8, null);
         $produit = $product->findBy(array(), array(), 8, null);
 
         $nbre = $panier->nbreProduit();
         return $this->render('home/index.html.twig', [
-            'categories' => $list,
             'produitRecent' => $produitRecent,
             'produits' => $produit,
             'panierProduit' => $nbre

@@ -24,8 +24,6 @@ class CartController extends AbstractController
     #[Route('/cart', name: 'cart')]
     public function index(Panier $panier, ManagerRegistry $request): Response
     {
-        $categorie = new CategoriesRepository($request);
-        $list = $categorie->findAll();
         $panierComplete = [];
         $productRepository = new ProductsRepository($request);
         if ($panier->get() != null) {
@@ -45,7 +43,6 @@ class CartController extends AbstractController
         $nbre = $panier->nbreProduit();
         //dd($panier->get());
         return $this->render('cart/index.html.twig', [
-            'categories' => $list,
             'panierComplete' => $panierComplete,
             'panierProduit' => $nbre
         ]);

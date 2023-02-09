@@ -148,7 +148,7 @@
 							</a>
 							<nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
 								<div class="navbar-nav w-100">
-									{% for categorie in categories %}
+									{% for categorie in categories.getCategories %}
 										{% if (categorie.subCategories is empty) and categorie.parent is null %}
 											<a href="{{ path('shopCategorie',{'slug':categorie.slug})}}" class="nav-item nav-link">{{categorie}}</a>
 										{% elseif categorie.subCategories is not empty %}

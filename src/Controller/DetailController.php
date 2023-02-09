@@ -15,8 +15,6 @@ class DetailController extends AbstractController
     #[Route('/detail/{slug}', name: 'detail')]
     public function index($slug, ManagerRegistry $registry, Panier $panier): Response
     {
-        $categorie = new CategoriesRepository($registry);
-        $list = $categorie->findAll();
         $product = new ProductsRepository($registry);
         $product = $product->findOneBySlug($slug);
 
@@ -24,7 +22,6 @@ class DetailController extends AbstractController
 
         return $this->render('detail/index.html.twig', [
             'product' => $product,
-            'categories' => $list,
             'panierProduit' => $nbre
         ]);
     }

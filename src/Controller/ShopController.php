@@ -19,12 +19,9 @@ class ShopController extends AbstractController
 
         $product = new ProductsRepository($registry);
         $products = $product->findAll();
-        $categorie = new CategoriesRepository($registry);
-        $list = $categorie->findAll();
 
         $nbre = $panier->nbreProduit();
         return $this->render('shop/index.html.twig', [
-            'categories' => $list,
             'products' => $products,
             'panierProduit' => $nbre
         ]);
@@ -36,13 +33,11 @@ class ShopController extends AbstractController
 
 
         $categorie = new CategoriesRepository($registry);
-        $list = $categorie->findAll();
         $cat = $categorie->findOneBySlug($slug);
         $products = $cat->getProducts();
 
         $nbre = $panier->nbreProduit();
         return $this->render('shop/shopCategorie.html.twig', [
-            'categories' => $list,
             'products' => $products,
             'panierProduit' => $nbre
         ]);
