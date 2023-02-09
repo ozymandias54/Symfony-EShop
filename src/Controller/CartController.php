@@ -44,7 +44,6 @@ class CartController extends AbstractController
         //dd($panier->get());
         return $this->render('cart/index.html.twig', [
             'panierComplete' => $panierComplete,
-            'panierProduit' => $nbre
         ]);
     }
 

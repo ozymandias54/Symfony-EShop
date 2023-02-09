@@ -13,9 +13,6 @@ class CheckoutController extends AbstractController
     public function index(Panier $panier): Response
     {
         $nbre = $panier->nbreProduit();
-        return $this->render('checkout/index.html.twig', [
-            'controller_name' => 'CheckoutController',
-            'panierProduit' => $nbre
-        ]);
+        return $this->render('checkout/index.html.twig', []);
     }
 }

@@ -22,7 +22,6 @@ class DetailController extends AbstractController
 
         return $this->render('detail/index.html.twig', [
             'product' => $product,
-            'panierProduit' => $nbre
         ]);
     }
 }

@@ -33,7 +33,6 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'produitRecent' => $produitRecent,
             'produits' => $produit,
-            'panierProduit' => $nbre
         ]);
     }
 }

@@ -13,9 +13,6 @@ class ContactController extends AbstractController
     public function index(Panier $panier): Response
     {
         $nbre = $panier->nbreProduit();
-        return $this->render('contact/index.html.twig', [
-            'controller_name' => 'ContactController',
-            'panierProduit' => $nbre
-        ]);
+        return $this->render('contact/index.html.twig', []);
     }
 }

@@ -13,9 +13,6 @@ class CompteController extends AbstractController
     public function index(Panier $panier): Response
     {
         $nbre = $panier->nbreProduit();
-        return $this->render('compte/index.html.twig', [
-            'controller_name' => 'CompteController',
-            'panierProduit' => $nbre
-        ]);
+        return $this->render('compte/index.html.twig', []);
     }
 }

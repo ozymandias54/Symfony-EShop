@@ -23,7 +23,6 @@ class ShopController extends AbstractController
         $nbre = $panier->nbreProduit();
         return $this->render('shop/index.html.twig', [
             'products' => $products,
-            'panierProduit' => $nbre
         ]);
     }
 
@@ -39,7 +38,6 @@ class ShopController extends AbstractController
         $nbre = $panier->nbreProduit();
         return $this->render('shop/shopCategorie.html.twig', [
             'products' => $products,
-            'panierProduit' => $nbre
         ]);
     }
 }
