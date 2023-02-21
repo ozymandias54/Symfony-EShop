@@ -108,4 +108,8 @@ class Reviews
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->createAt->format("M d Y");
+    }
 }

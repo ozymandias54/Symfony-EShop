@@ -46,7 +46,14 @@
 									{{panier.name}}</td>
 								<td class="align-middle">{{(panier.prix/100)|number_format(2,',','.')}}
 									€</td>
-								<td class="align-middle">{{panier.quantite}}</td>
+								<td class="align-middle">
+									{{panier.quantite}}
+									<div class="input-group-btn">
+										<button type="button" class="btn btn-primary btn-plus">
+											<i class="fa fa-plus"></i>
+										</button>
+									</div>
+								</td>
 								<td class="align-middle">{{((panier.prix/100) * panier.quantite)|number_format(2,',','.')}}
 									€</td>
 								{% set total =total +(panier.prix/100) * panier.quantite  %}
